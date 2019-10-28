@@ -1,0 +1,32 @@
+- hosts: "{{ server }}"
+  remote_user: root
+  become: yes
+  tasks:
+  - name: Set authorized key taken from file, add to sudoers
+    user:
+      name: "{{ user }}"
+      shell: /bin/bash
+      ssh_key_file: "{{ lookup('file', '../files/{{ key }}') }}"
+      groups: wheel
+
+  - name: install packages
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - epel-release
+      - python
+      - git
+      - docker
+	  
+  - name: enable a timer for dnf-automatic
+    systemd:
+      name: docker
+      state: started
+      enabled: yes   
+
+  - name: Install Docker Compose (if configured).
+    get_url:
+      url: "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64"
+      dest: /usr/local/bin/docker-compose
+      mode: 0755

@@ -1,0 +1,6 @@
+tree:
+.
+├── files
+│   └── Tomek_id_rsa.pub
+└── tasks
+    └── main.yml

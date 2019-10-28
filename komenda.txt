@@ -1,0 +1,1 @@
+ansible-playbook --timeout 30 main.yml --extra-vars user=tomek --extra-vars server=localhost --extra-vars key=Tomek_id_rsa.pub

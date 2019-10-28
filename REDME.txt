@@ -1,0 +1,16 @@
+Komenda startująca posiada 3 zmienne:
+	* user  --> nazwa użytkownika
+	* server --> nazwa serwera na którym chcemy puścić komende
+	* key --> nazwa klucza
+
+Aby wystartować skrypt nalezy przejść do folderu task i wykonać komende, np:
+cd tasks && ansible-playbook --timeout 30 main.yml --extra-vars user=tomek --extra-vars server=localhost --extra-vars key=Tomek_id_rsa.pub
+-------------------------------------------------------------------------------------------------------------------
+
+The starting command has 3 variables:
+	* user -> username
+	* server -> name of server on which we want to run the command
+	* key -> key name
+
+To start the script you have to go to the "task" directory and execute the command for example 
+cd tasks && ansible-playbook --timeout 30 main.yml --extra-vars user=tomek --extra-vars server=localhost --extra-vars key=Tomek_id_rsa.pub
